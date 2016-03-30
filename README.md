@@ -1,4 +1,4 @@
-# Capistrano Olympus  
+# Capistrano Olympus [![RubyGem version](https://img.shields.io/gem/v/capistrano-olympus.svg?style=flat-square)](https://rubygems.org/gems/capistrano-olympus)  
 
 ---
 
