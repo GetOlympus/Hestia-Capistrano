@@ -5,7 +5,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 Gem::Specification.new do |gem|
   gem.name          = 'capistrano-olympus'
   gem.version       = '0.0.1'
-  gem.date          = '2016.03.31'
+  gem.date          = '2016-03-31'
   gem.authors       = ['Achraf Chouk']
   gem.email         = ['achrafchouk@gmail.com']
   gem.description   = "Capistrano 3.x deployment processes for WordPress and Olympus framework"
