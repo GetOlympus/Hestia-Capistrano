@@ -4,8 +4,8 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |gem|
   gem.name          = 'capistrano-olympus'
-  gem.version       = '0.0.3'
-  gem.date          = '2016-04-01'
+  gem.version       = '0.0.4'
+  gem.date          = Time.now.strftime("%Y-%m-%d")
   gem.authors       = ['Achraf Chouk']
   gem.email         = ['achrafchouk@gmail.com']
   gem.description   = "Capistrano 3.x deployment processes for WordPress and Olympus framework"
@@ -13,7 +13,26 @@ Gem::Specification.new do |gem|
   gem.homepage      = 'http://github.com/crewstyle/capistrano-olympus'
   gem.license       = 'MIT'
 
-  gem.files         = `git ls-files`.split($/)
+  gem.files         = [
+    'CHANGELOG',
+    'LICENSE',
+    'README.md',
+    'capistrano-olympus.gemspec',
+    'lib/capistrano-olympus.rb',
+    'lib/capistrano/olympus.rb',
+    'lib/capistrano/tasks/capistrano-deploy.rake',
+    'lib/capistrano/tasks/database.rake',
+    'lib/capistrano/tasks/directories.rake',
+    'lib/capistrano/tasks/files.rake',
+    'lib/capistrano/tasks/htaccess.rake',
+    'lib/capistrano/tasks/pagespeed.rake',
+    'lib/capistrano/tasks/php.rake',
+    'lib/capistrano/tasks/redis.rake',
+    'lib/capistrano/tasks/robots.rake',
+    'lib/capistrano/tasks/server.rake',
+    'lib/capistrano/tasks/varnish.rake',
+    'lib/capistrano/vars/defaults.rb',
+  ]
   gem.executables   = gem.files.grep(%r{^bin/}) { |f| File.basename(f) }
 
   # no tests as of yet
