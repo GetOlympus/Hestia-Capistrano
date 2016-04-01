@@ -9,7 +9,7 @@ namespace :htaccess do
         puts "Copy .htaccess file".colorize(:light_blue)
         upload! StringIO.new(File.read("#{release_path}/web/.htaccess")), "#{shared_path}/web/.htaccess"
       else
-        puts "Create .htaccess file".colorize(:green)
+        puts "Create .htaccess file".colorize(:light_blue)
         io = StringIO.new("
 # BEGIN WordPress
 

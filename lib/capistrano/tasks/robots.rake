@@ -9,7 +9,7 @@ namespace :robots do
         puts "Copy robots.txt file".colorize(:light_blue)
         upload! StringIO.new(File.read("#{release_path}/web/robots.txt")), "#{shared_path}/web/robots.txt"
       else
-        puts "Create robots.txt file".colorize(:green)
+        puts "Create robots.txt file".colorize(:light_blue)
         if fetch(:stage) == :production then
           io = StringIO.new("Sitemap: #{fetch(:localurl)}/sitemap.xml
 

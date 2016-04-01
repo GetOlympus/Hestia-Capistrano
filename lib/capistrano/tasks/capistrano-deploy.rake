@@ -26,15 +26,17 @@ namespace :deploy do
   task :clear do
     on release_roles(:all) do
 
-      puts "Restart all services"
-      invoke "server:stop"
-      invoke "php:restart"
-      invoke "server:start"
+      #Do nothing for now...
 
-      puts "Clear all caches"
-      invoke "redis:flushall"
-      invoke "pagespeed:flushall"
-      invoke "varnish:restart"
+      #puts "Restart all services"
+      #invoke "server:stop"
+      #invoke "php:restart"
+      #invoke "server:start"
+
+      #puts "Clear all caches"
+      #invoke "redis:flushall"
+      #invoke "pagespeed:flushall"
+      #invoke "varnish:restart"
 
     end
   end

@@ -5,9 +5,9 @@ namespace :server do
   task :restart do
     on roles(:app) do
       if test("[ -f /etc/init.d/nginx ]")
-        run "#{try_sudo} service nginx restart"
+        sudo :service, :nginx, :restart
       elsif test("[ -f /etc/init.d/apache2 ]")
-        run "#{try_sudo} service apache2 restart"
+        sudo :service, :apache2, :restart
       end
     end
   end
@@ -16,9 +16,9 @@ namespace :server do
   task :start do
     on roles(:app) do
       if test("[ -f /etc/init.d/nginx ]")
-        run "#{try_sudo} service nginx start"
+        sudo :service, :nginx, :start
       elsif test("[ -f /etc/init.d/apache2 ]")
-        run "#{try_sudo} service apache2 start"
+        sudo :service, :apache2, :start
       end
     end
   end
@@ -27,9 +27,9 @@ namespace :server do
   task :stop do
     on roles(:app) do
       if test("[ -f /etc/init.d/nginx ]")
-        run "#{try_sudo} service nginx stop"
+        sudo :service, :nginx, :stop
       elsif test("[ -f /etc/init.d/apache2 ]")
-        run "#{try_sudo} service apache2 stop"
+        sudo :service, :apache2, :stop
       end
     end
   end
