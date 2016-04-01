@@ -5,6 +5,11 @@ namespace :directories do
   task :do_actions do
     on release_roles(:all) do
 
+      if test "[ ! -d \"#{shared_path}/app/config\" ]"
+        puts "Create app/config folder".colorize(:green)
+        execute :mkdir, '-p', "#{shared_path}/app/config"
+      end
+
       if test "[ ! -d \"#{shared_path}/tmp\" ]"
         puts "Create tmp folder".colorize(:green)
         execute :mkdir, '-p', "#{shared_path}/tmp"

@@ -6,14 +6,14 @@ namespace :database do
     on release_roles(:all) do
 
       # Ask configs
-      set :database_host, ask('Enter the database hostname:', 'localhost')
-      set :database_name, ask('Enter the database name:', 'database_name_here')
-      set :database_user, ask('Enter the database user:', 'username_here')
-      set :database_pass, ask('Enter the database password:', 'username_here', echo: false)
+      set :database_host, ask("Enter the database hostname:".colorize(:color, :magenta), 'localhost')
+      set :database_name, ask("Enter the database name:".colorize(:color, :magenta), 'database_name_here')
+      set :database_user, ask("Enter the database user:".colorize(:color, :magenta), 'username_here')
+      set :database_pass, ask("Enter the database password:".colorize(:color, :magenta), 'password_here', echo: false)
 
-      set :wordpress_name, ask('Enter the admin username:', 'admin')
-      set :wordpress_mail, ask('Enter the admin email address:', 'admin@domain.tld')
-      set :wordpress_pass, ask('Enter the admin password:', 'password', echo: false)
+      set :wordpress_name, ask("Enter the admin username:".colorize(:color, :magenta), 'admin')
+      set :wordpress_mail, ask("Enter the admin email address:".colorize(:color, :magenta), 'admin@domain.tld')
+      set :wordpress_pass, ask("Enter the admin password:".colorize(:color, :magenta), 'password', echo: false)
 
 
       if File.exists?("#{release_path}/tmp/database.sql")
@@ -40,16 +40,11 @@ namespace :database do
         if fetch(:stage) == :production then
           set :use_cache, true
           set :use_wpcron, false
-          debug = StringIO.new("  'debug' => false,")
+          set :debug, "false"
         else
           set :use_cache, false
           set :use_wpcron, true
-          debug = StringIO.new("  'debug' => [
-    'savequeries' => true,
-    'script_debug' => true,
-    'wp_debug_display' => true,
-    'wp_debug' => true,
-  ],")
+          set :debug, "['savequeries' => true, 'script_debug' => true, 'wp_debug_display' => true, 'wp_debug' => true]"
         end
 
         io = StringIO.new("<?php
@@ -89,7 +84,7 @@ return [
   'cache' => #{fetch(:use_cache)},
 
   // Debug
-#{fetch(:debug)}
+  'debug' => #{fetch(:debug)},
 ];
 
 ")
