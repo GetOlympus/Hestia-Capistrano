@@ -6,10 +6,10 @@ namespace :robots do
     on release_roles(:all) do
 
       if File.exists?("#{release_path}/web/robots.txt")
-        puts "Copy robots.txt file"
+        puts "Copy robots.txt file".colorize(:light_blue)
         upload! StringIO.new(File.read("#{release_path}/web/robots.txt")), "#{shared_path}/web/robots.txt"
       else
-        puts "Create robots.txt file"
+        puts "Create robots.txt file".colorize(:green)
         if fetch(:stage) == :production then
           io = StringIO.new("Sitemap: #{fetch(:localurl)}/sitemap.xml
 

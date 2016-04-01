@@ -6,10 +6,10 @@ namespace :htaccess do
     on release_roles(:all) do
 
       if File.exists?("#{release_path}/web/.htaccess")
-        puts "Copy .htaccess file"
+        puts "Copy .htaccess file".colorize(:light_blue)
         upload! StringIO.new(File.read("#{release_path}/web/.htaccess")), "#{shared_path}/web/.htaccess"
       else
-        puts "Create .htaccess file"
+        puts "Create .htaccess file".colorize(:green)
         io = StringIO.new("
 # BEGIN WordPress
 

@@ -17,11 +17,11 @@ namespace :database do
 
 
       if File.exists?("#{release_path}/tmp/database.sql")
-        puts "Copy database.sql file"
+        puts "Copy database.sql file".colorize(:light_blue)
         upload! StringIO.new(File.read("#{release_path}/tmp/database.sql")), "#{shared_path}/tmp/database.sql"
       else
-        puts "Create database.sql file"
-        io = StringIO.new("CREATE DATABASE IF NOT EXISTS `#{fetch(:database_name)}`")
+        puts "Create database.sql file".colorize(:green)
+        io = StringIO.new("CREATE DATABASE IF NOT EXISTS `#{fetch(:database_name)}`;")
         upload! io, File.join(shared_path, "database.sql")
         execute :chmod, "644 #{shared_path}/database.sql"
 
@@ -32,14 +32,18 @@ namespace :database do
 
 
       if File.exists?("#{release_path}/app/config/env.php")
-        puts "Copy env.php file"
+        puts "Copy env.php file".colorize(:light_blue)
         upload! StringIO.new(File.read("#{release_path}/app/config/env.php")), "#{shared_path}/app/config/env.php"
       else
-        puts "Create env.php file"
+        puts "Create env.php file".colorize(:green)
 
         if fetch(:stage) == :production then
+          set :use_cache, true
+          set :use_wpcron, false
           debug = StringIO.new("  'debug' => false,")
         else
+          set :use_cache, false
+          set :use_wpcron, true
           debug = StringIO.new("  'debug' => [
     'savequeries' => true,
     'script_debug' => true,
@@ -54,24 +58,37 @@ namespace :database do
  * File auto-generated while first deploy.
  */
 return [
-  //Database
+  // Database
   'database' => [
     'host' => '#{fetch(:database_host)}',
     'name' => '#{fetch(:database_name)}',
     'user' => '#{fetch(:database_user)}',
     'pass' => '#{fetch(:database_pass)}',
+    'charset' => 'utf8',
+    'collate' => '',
+    'prefix' => 'wp_',
   ],
 
-  //WordPress URLs
+  // WordPress configurations
   'wordpress' => [
     'home' => '#{fetch(:localurl)}',
     'siteurl' => '#{fetch(:localurl)}/cms',
+    'revisions' => 3
   ],
 
-  //Secure?
+  // Secure?
   'https' => false,
 
-  //Debug
+  // Default WordPress cron?
+  'cron' => #{fetch(:use_wpcron)},
+
+  // Security
+  'file_edit' => false,
+
+  // Cache
+  'cache' => #{fetch(:use_cache)},
+
+  // Debug
 #{fetch(:debug)}
 ];
 
@@ -82,14 +99,38 @@ return [
       end
 
 
-      puts "Execute wp-cli commands to create database"
+      if File.exists?("#{release_path}/app/config/salt.php")
+        puts "Copy salt.php file".colorize(:light_blue)
+        upload! StringIO.new(File.read("#{release_path}/app/config/salt.php")), "#{shared_path}/app/config/salt.php"
+      else
+        puts "Create salt.php file".colorize(:green)
+        set :secret_keys, capture("curl -s -k https://api.wordpress.org/secret-key/1.1/salt")
+
+        io = StringIO.new("<?php
+
+/**
+ * File auto-generated while first deploy.
+ * @link https://api.wordpress.org/secret-key/1.1/salt/ WordPress.org secret-key service 
+ */
+#{fetch(:secret_keys)}
+
+")
+        upload! io, File.join(shared_path, "salt.php")
+        execute :chmod, "644 #{shared_path}/salt.php"
+        execute :mv, "#{shared_path}/salt.php", "#{shared_path}/app/config/"
+      end
+
+
+      puts "Execute wp-cli commands to create database".colorize(:green)
       execute :mkdir, '-p', "#{shared_path}/tmp/wpcli"
       execute "wp core download --path=#{shared_path}/tmp/wpcli --force"
 
       unless File.exists?("#{shared_path}/tmp/wpcli/wp-config.php")
+        puts "Execute wp-cli command to generate wp-config.php file".colorize(:green)
         execute "wp core config --path=#{shared_path}/tmp/wpcli --dbname=#{fetch(:database_name)} --dbuser=#{fetch(:database_user)} --dbpass=#{fetch(:database_pass)}"
       end
 
+      puts "Execute wp-cli command to install WordPress in the database".colorize(:green)
       execute "wp core install --path=#{shared_path}/tmp/wpcli --url=#{fetch(:localurl)} --title=#{fetch(:application)} --admin_user=#{fetch(:wordpress_name)} --admin_password=#{fetch(:wordpress_pass)} --admin_email=#{fetch(:wordpress_mail)}"
 
       execute :rm, '-rf', "#{shared_path}/tmp"

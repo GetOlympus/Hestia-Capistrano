@@ -5,11 +5,6 @@ namespace :files do
   task :do_actions do
     on release_roles(:all) do
 
-      if File.exists?("#{release_path}/app/config/common.php")
-        puts "Copy common.php file"
-        upload! StringIO.new(File.read("#{release_path}/app/config/common.php")), "#{shared_path}/app/config/common.php"
-      end
-
       # Create DB files, and install data
       invoke "database:do_actions"
 

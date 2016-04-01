@@ -28,7 +28,8 @@ Require `capistrano-olympus` in your gem file:
 ```
 # Gemfile
 gem 'capistrano',  '~> 3.4'
-gem 'capistrano-olympus', '~> 0.0.1'
+gem 'capistrano-olympus', '~> 0.0.2'
+gem 'colorize', '~> 0.7.7'
 ```
 
 ### Usage
@@ -54,12 +55,12 @@ lock '3.4.0'
 # ~~~~
 
 # Setup Capistrano
-set :log_level, :debug
-set :keep_releases, 3
+set :log_level, fetch(:log_level, :debug)
+set :keep_releases, fetch(:keep_releases, 3)
 
-# Setup Project
-set :application, 'olympus-capified'
-set :localurl, 'http://www.domain.tld'
+# Setup Project ~ Update these settings
+set :application, fetch(:application, 'olympus-capified')
+set :localurl, fetch(:localurl, 'http://www.domain.tld')
 
 # Setup Git
 set :repo_url, 'git@github.com:crewstyle/Olympus.git'
@@ -85,7 +86,7 @@ set :composer_download_url, 'https://getcomposer.org/installer'
 # ~~~~
 
 # Setup Symlinks
-set :linked_files, ["app/config/env.php", "web/.htaccess", "web/robots.txt"]
+set :linked_files, ["app/config/env.php", "app/config/salt.php", "web/.htaccess", "web/robots.txt"]
 set :linked_dirs, ["web/statics/languages", "web/statics/plugins", "web/statics/uploads"]
 
 ```
