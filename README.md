@@ -28,7 +28,7 @@ Require `capistrano-olympus` in your gem file:
 ```
 # Gemfile
 gem 'capistrano',  '~> 3.4'
-gem 'capistrano-olympus', '~> 0.0.2'
+gem 'capistrano-olympus', '~> 0.0.3'
 gem 'colorize', '~> 0.7.7'
 ```
 

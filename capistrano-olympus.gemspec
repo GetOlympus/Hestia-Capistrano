@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |gem|
   gem.name          = 'capistrano-olympus'
-  gem.version       = '0.0.2'
+  gem.version       = '0.0.3'
   gem.date          = '2016-04-01'
   gem.authors       = ['Achraf Chouk']
   gem.email         = ['achrafchouk@gmail.com']
