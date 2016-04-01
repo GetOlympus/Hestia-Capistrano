@@ -45,7 +45,7 @@ require 'capistrano/olympus'
 ### Settings
 
 All default settings are defined in the `lib/capistrano/vars/defaults.rb` file. Please, refer to it to see exactly how the defaults are set up.  
-If you want to override any setting, just set it on your `app/deploy/stages/:stage.rb` file.
+If you want to override any setting, just set it on your `app/deploy/config.rb` file.
 
 ```ruby
 # Config valid only for current version of Capistrano
