@@ -7,7 +7,7 @@ lock '3.4.0'
 set :log_level, fetch(:log_level, :debug)
 set :keep_releases, fetch(:keep_releases, 3)
 
-# Setup Project ~ Update these settings
+# Setup Project
 set :application, fetch(:application, 'olympus-capified')
 set :localurl, fetch(:localurl, 'http://www.domain.tld')
 
