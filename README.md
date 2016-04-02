@@ -17,6 +17,7 @@ Build with ♥ for **WordPress developers**._
 It depends on the following Capistrano tasks to deploy a WordPress application:
 
 + capistrano-composer: https://github.com/capistrano/composer
++ composer: https://github.com/fazibear/colorize
 + sshkit-sudo: https://github.com/kentaroi/sshkit-sudo
 
 ---
@@ -55,6 +56,16 @@ set :keep_releases, fetch(:keep_releases, 3)
 # Setup Project
 set :application, fetch(:application, 'olympus-capified')
 set :localurl, fetch(:localurl, 'http://www.domain.tld')
+```
+
+---
+
+### Deployment
+
+Depending on your stage files, you can deploy simply thanks to the following command line:
+
+```
+bundle exec cap production deploy
 ```
 
 ---
