@@ -24,14 +24,7 @@ namespace :deploy do
 
   desc "Install composer vendors"
   task :composer do
-    on release_roles(:all) do
-      within fetch(:release_path) do
-
-        puts "Install composer vendors in #{fetch(:release_path)}".colorize(:light_blue)
-        invoke "composer:run", :install, fetch(:composer_install_flags)
-
-      end
-    end
+    invoke "composer:install"
   end
 
   desc "Restart services and clear caches"
