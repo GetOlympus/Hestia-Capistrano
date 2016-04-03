@@ -5,8 +5,8 @@ namespace :composer do
   task :install do
     on release_roles(:all) do
 
-      puts "Install composer vendors in #{:release_path}".colorize(:light_blue)
-      execute "cd '#{release_path}' && composer install"
+      puts "Install composer vendors in #{release_path}".colorize(:light_blue)
+      execute "cd #{release_path} && composer install --quiet"
 
     end
   end
