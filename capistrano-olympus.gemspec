@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |gem|
   gem.name          = 'capistrano-olympus'
-  gem.version       = '0.0.5'
+  gem.version       = '0.0.6'
   gem.date          = Time.now.strftime("%Y-%m-%d")
   gem.authors       = ['Achraf Chouk']
   gem.email         = ['achrafchouk@gmail.com']
@@ -21,6 +21,7 @@ Gem::Specification.new do |gem|
     'lib/capistrano-olympus.rb',
     'lib/capistrano/olympus.rb',
     'lib/capistrano/tasks/capistrano-deploy.rake',
+    'lib/capistrano/tasks/composer.rake',
     'lib/capistrano/tasks/database.rake',
     'lib/capistrano/tasks/directories.rake',
     'lib/capistrano/tasks/files.rake',

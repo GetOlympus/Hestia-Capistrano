@@ -29,7 +29,7 @@ Require `capistrano-olympus` in your gem file:
 ```
 # Gemfile
 gem 'capistrano',  '~> 3.4'
-gem 'capistrano-olympus', '~> 0.0.5'
+gem 'capistrano-olympus', '~> 0.0.6'
 ```
 
 ### Usage
