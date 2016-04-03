@@ -25,9 +25,11 @@ namespace :deploy do
   desc "Install composer vendors"
   task :composer do
     on release_roles(:all) do
+      within :release_path do
 
-      invoke "composer:run", :update, "--dev --prefer-dist"
+        invoke "composer:run", :update, "--dev --prefer-dist"
 
+      end
     end
   end
 
