@@ -3,6 +3,8 @@ module Capistrano
   end
 end
 
+SSHKit.config.command_map[:composer] = "php #{shared_path.join("composer.phar")}"
+
 # Deploy
 namespace :deploy do
 
@@ -42,7 +44,10 @@ namespace :deploy do
   end
 
   # Create files and dirs when its needed
-  before 'deploy:starting', 'deploy:setup'
+  before :starting, 'deploy:setup'
+
+  # Initialize composer
+  after :starting, 'composer:install_executable'
 
   # Restart services and clear caches
   after :publishing, 'deploy:clear'
