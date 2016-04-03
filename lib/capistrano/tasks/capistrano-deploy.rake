@@ -25,9 +25,9 @@ namespace :deploy do
   desc "Install composer vendors"
   task :composer do
     on release_roles(:all) do
-      within fetch(:composer_working_dir) do
+      within fetch(:release_path) do
 
-        puts "Install composer vendors in #{fetch(:composer_working_dir)}".colorize(:light_blue)
+        puts "Install composer vendors in #{fetch(:release_path)}".colorize(:light_blue)
         invoke "composer:run", :install, fetch(:composer_install_flags)
 
       end
