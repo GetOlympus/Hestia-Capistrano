@@ -22,6 +22,15 @@ namespace :deploy do
     end
   end
 
+  desc "Install composer vendors"
+  task :composer do
+    on release_roles(:all) do
+
+      invoke "composer:run", :update, "--dev --prefer-dist"
+
+    end
+  end
+
   desc "Restart services and clear caches"
   task :clear do
     on release_roles(:all) do
@@ -45,7 +54,7 @@ namespace :deploy do
   before :starting, 'deploy:setup'
 
   # Initialize composer
-  after :starting, 'composer:install'
+  after :starting, 'deploy:composer'
 
   # Restart services and clear caches
   after :publishing, 'deploy:clear'
