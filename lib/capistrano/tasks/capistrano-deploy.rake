@@ -12,10 +12,10 @@ namespace :deploy do
 
       # Check the very last action made: it means all setup processes are done!
       if test "[ ! -f \"#{shared_path}/web/robots.txt\" ]"
-        puts "Create directories"
+        puts "Create directories".colorize(:light_blue)
         invoke "directories:do_actions"
 
-        puts "Create files"
+        puts "Create files".colorize(:light_blue)
         invoke "files:do_actions"
       end
 
@@ -25,9 +25,10 @@ namespace :deploy do
   desc "Install composer vendors"
   task :composer do
     on release_roles(:all) do
-      within fetch(:release_path) do
+      within fetch(:composer_working_dir) do
 
-        invoke "composer:run", :update, "--dev --prefer-dist"
+        puts "Install composer vendors in #{fetch(:composer_working_dir)}".colorize(:light_blue)
+        invoke "composer:run", :install, fetch(:composer_install_flags)
 
       end
     end
