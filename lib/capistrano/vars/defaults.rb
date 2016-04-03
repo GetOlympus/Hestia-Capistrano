@@ -27,7 +27,6 @@ set :ssh_options, {
 
 # Setup Composer
 # Nothing to customize
-SSHKit.config.command_map[:composer] = "php #{fetch(:shared_path).join("composer.phar")}"
 
 # ~~~~
 
