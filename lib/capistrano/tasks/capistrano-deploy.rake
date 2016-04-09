@@ -48,7 +48,7 @@ namespace :deploy do
   end
 
   # Initialize
-  after :starting, 'deploy:install'
+  before :starting, 'deploy:install'
 
   # Restart services and clear caches
   after :publishing, 'deploy:clear'
