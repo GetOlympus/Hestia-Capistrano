@@ -1,8 +1,8 @@
 # Files
 namespace :files do
 
-  desc "Creates files"
-  task :do_actions do
+  desc "Create files"
+  task :do_init do
     on release_roles(:all) do
 
       # Create robots.txt file
@@ -21,6 +21,13 @@ Disallow: /
         execute :chmod, "644 #{release_path}/robots.txt"
         execute :mv, "#{release_path}/robots.txt", "#{release_path}/web/robots.txt"
       end
+
+    end
+  end
+
+  desc "Link files"
+  task :do_link do
+    on release_roles(:all) do
 
       # Create files for symlinks
       fetch(:linked_files).each do |file|

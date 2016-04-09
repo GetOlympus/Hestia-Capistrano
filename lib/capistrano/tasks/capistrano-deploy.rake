@@ -6,12 +6,9 @@ end
 # Deploy
 namespace :deploy do
 
-  desc "Install"
-  task :install do
+  desc "Initialize"
+  task :initialize do
     on release_roles(:all) do
-
-      # Run composer install
-      invoke "composer:install"
 
       # Check the very last action made: it means all setup processes are done!
       if test "[ ! -f \"#{shared_path}/web/robots.txt\" ]"
@@ -19,8 +16,21 @@ namespace :deploy do
         invoke "directories:do_actions"
 
         puts "Create files".colorize(:light_blue)
-        invoke "files:do_actions"
+        invoke "files:do_init"
       end
+
+    end
+  end
+
+  desc "Install"
+  task :install do
+    on release_roles(:all) do
+
+      # Run composer install
+      invoke "composer:install"
+
+      # Link files
+      invoke "files:do_link"
 
       # Create files and dirs when its needed
       invoke "database:do_actions"
@@ -48,7 +58,8 @@ namespace :deploy do
   end
 
   # Initialize
-  before :starting, 'deploy:install'
+  before :starting, 'deploy:initialize'
+  after :starting, 'deploy:install'
 
   # Restart services and clear caches
   after :publishing, 'deploy:clear'
