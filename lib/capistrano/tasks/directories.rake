@@ -10,24 +10,16 @@ namespace :directories do
         execute :mkdir, '-p', "#{shared_path}/app/config"
       end
 
-      if test "[ ! -d \"#{shared_path}/tmp\" ]"
-        puts "Create tmp folder".colorize(:light_blue)
-        execute :mkdir, '-p', "#{shared_path}/tmp"
-      end
+      fetch(:linked_dirs).each do |folder|
+        if test "[ ! -d \"#{shared_path}/#{folder}\" ]"
+          puts "Create #{folder} folder".colorize(:light_blue)
 
-      if test "[ ! -d \"#{shared_path}/web/statics/languages\" ]"
-        puts "Create web/statics/languages folder".colorize(:light_blue)
-        execute :mkdir, '-p', "#{shared_path}/web/statics/languages"
-      end
+          execute :mkdir, '-p', "#{shared_path}/#{folder}"
 
-      if test "[ ! -d \"#{shared_path}/web/statics/plugins\" ]"
-        puts "Create web/statics/plugins folder".colorize(:light_blue)
-        execute :mkdir, '-p', "#{shared_path}/web/statics/plugins"
-      end
-
-      if test "[ ! -d \"#{shared_path}/web/statics/uploads\" ]"
-        puts "Create web/statics/uploads folder".colorize(:light_blue)
-        execute :mkdir, '-p', "#{shared_path}/web/statics/uploads"
+          if test "[ -d \"#{release_path}/#{folder}\" ]"
+            execute :rm, '-rf', "#{release_path}/#{folder}"
+          end
+        end
       end
 
     end

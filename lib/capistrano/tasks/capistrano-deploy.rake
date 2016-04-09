@@ -6,8 +6,13 @@ end
 # Deploy
 namespace :deploy do
 
+  desc "Install composer vendors"
+  task :composer do
+    invoke "composer:install"
+  end
+
   desc "Create files and dirs when its needed"
-  task :setup do
+  task :filesystem do
     on release_roles(:all) do
 
       # Check the very last action made: it means all setup processes are done!
@@ -22,9 +27,9 @@ namespace :deploy do
     end
   end
 
-  desc "Install composer vendors"
-  task :composer do
-    invoke "composer:install"
+  desc "Install database useful files"
+  task :database do
+    invoke "database:do_actions"
   end
 
   desc "Restart services and clear caches"
@@ -46,11 +51,10 @@ namespace :deploy do
     end
   end
 
-  # Create files and dirs when its needed
-  before :starting, 'deploy:setup'
-
   # Initialize composer
   after :starting, 'deploy:composer'
+  after :starting, 'deploy:filesystem'
+  after :starting, 'deploy:database'
 
   # Restart services and clear caches
   after :publishing, 'deploy:clear'
