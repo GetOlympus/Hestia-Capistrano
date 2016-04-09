@@ -6,6 +6,19 @@ end
 # Deploy
 namespace :deploy do
 
+  # Initialize
+  before 'deploy:starting', 'custom:initialize'
+  before 'deploy:updating', 'custom:install'
+  #after :starting, 'custom:install'
+
+  # Restart services and clear caches
+  after 'deploy:publishing', 'custom:clear'
+
+end
+
+# Custom tasks
+namespace :custom do
+
   desc "Initialize"
   task :initialize do
     on release_roles(:all) do
@@ -65,13 +78,5 @@ namespace :deploy do
 
     end
   end
-
-  # Initialize
-  before 'deploy:starting', 'deploy:initialize'
-  before 'git:create_release', 'deploy:install'
-  #after :starting, 'deploy:install'
-
-  # Restart services and clear caches
-  after 'deploy:publishing', 'deploy:clear'
 
 end
