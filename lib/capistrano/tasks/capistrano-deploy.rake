@@ -10,7 +10,9 @@ namespace :deploy do
   task :initialize do
     on release_roles(:all) do
 
-      puts "Running deploy:initialize task".colorize(:color => :light_green, :background => :light_black)
+      puts " "
+      puts "Running deploy:initialize task".colorize(:color => :light_green, :mode => :bold)
+      puts " "
 
       # Check the very last action made: it means all setup processes are done!
       if test "[ ! -f \"#{shared_path}/web/robots.txt\" ]"
@@ -25,7 +27,9 @@ namespace :deploy do
   task :install do
     on release_roles(:all) do
 
-      puts "Running deploy:install task".colorize(:color => :light_green, :background => :light_black)
+      puts " "
+      puts "Running deploy:install task".colorize(:color => :light_green, :mode => :bold)
+      puts " "
 
       # Run composer install
       invoke "composer:install"
@@ -43,7 +47,9 @@ namespace :deploy do
   task :clear do
     on release_roles(:all) do
 
-      puts "Running deploy:clear task".colorize(:color => :light_green, :background => :light_black)
+      puts " "
+      puts "Running deploy:clear task".colorize(:color => :light_green, :mode => :bold)
+      puts " "
 
       #Do nothing for now...
 
@@ -62,7 +68,7 @@ namespace :deploy do
 
   # Initialize
   before 'deploy:starting', 'deploy:initialize'
-  before 'deploy:symlink:shared', 'deploy:install'
+  before 'git:create_release', 'deploy:install'
   #after :starting, 'deploy:install'
 
   # Restart services and clear caches
