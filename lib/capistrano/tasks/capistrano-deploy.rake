@@ -10,7 +10,7 @@ namespace :deploy do
   task :install do
     on release_roles(:all) do
 
-      puts "Run composer install".colorize(:light_blue)
+      # Run composer install
       invoke "composer:install"
 
       # Check the very last action made: it means all setup processes are done!
@@ -22,7 +22,7 @@ namespace :deploy do
         invoke "files:do_actions"
       end
 
-      puts "Create files and dirs when its needed".colorize(:light_blue)
+      # Create files and dirs when its needed
       invoke "database:do_actions"
 
     end
