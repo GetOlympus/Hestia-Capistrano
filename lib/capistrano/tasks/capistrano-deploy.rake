@@ -14,9 +14,6 @@ namespace :deploy do
       if test "[ ! -f \"#{shared_path}/web/robots.txt\" ]"
         puts "Create directories".colorize(:light_blue)
         invoke "directories:do_actions"
-
-        puts "Create files".colorize(:light_blue)
-        invoke "files:do_init"
       end
 
     end
@@ -30,7 +27,7 @@ namespace :deploy do
       invoke "composer:install"
 
       # Link files
-      invoke "files:do_link"
+      invoke "files:do_action"
 
       # Create files and dirs when its needed
       invoke "database:do_actions"
