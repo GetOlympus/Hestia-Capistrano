@@ -10,6 +10,8 @@ namespace :deploy do
   task :initialize do
     on release_roles(:all) do
 
+      puts "Running deploy:initialize task".colorize(:color => :light_green, :background => :light_black)
+
       # Check the very last action made: it means all setup processes are done!
       if test "[ ! -f \"#{shared_path}/web/robots.txt\" ]"
         puts "Create directories".colorize(:light_blue)
@@ -22,6 +24,8 @@ namespace :deploy do
   desc "Install"
   task :install do
     on release_roles(:all) do
+
+      puts "Running deploy:install task".colorize(:color => :light_green, :background => :light_black)
 
       # Run composer install
       invoke "composer:install"
@@ -38,6 +42,8 @@ namespace :deploy do
   desc "Restart services and clear caches"
   task :clear do
     on release_roles(:all) do
+
+      puts "Running deploy:clear task".colorize(:color => :light_green, :background => :light_black)
 
       #Do nothing for now...
 
