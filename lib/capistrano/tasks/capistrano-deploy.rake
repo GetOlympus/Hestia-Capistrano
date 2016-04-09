@@ -6,14 +6,12 @@ end
 # Deploy
 namespace :deploy do
 
-  desc "Install composer vendors"
-  task :composer do
-    invoke "composer:install"
-  end
-
-  desc "Create files and dirs when its needed"
-  task :filesystem do
+  desc "Install"
+  task :install do
     on release_roles(:all) do
+
+      puts "Run composer install".colorize(:light_blue)
+      invoke "composer:install"
 
       # Check the very last action made: it means all setup processes are done!
       if test "[ ! -f \"#{shared_path}/web/robots.txt\" ]"
@@ -24,12 +22,10 @@ namespace :deploy do
         invoke "files:do_actions"
       end
 
-    end
-  end
+      puts "Create files and dirs when its needed".colorize(:light_blue)
+      invoke "database:do_actions"
 
-  desc "Install database useful files"
-  task :database do
-    invoke "database:do_actions"
+    end
   end
 
   desc "Restart services and clear caches"
@@ -51,10 +47,8 @@ namespace :deploy do
     end
   end
 
-  # Initialize composer
-  after :starting, 'deploy:composer'
-  after :starting, 'deploy:filesystem'
-  after :starting, 'deploy:database'
+  # Initialize
+  after :starting, 'deploy:install'
 
   # Restart services and clear caches
   after :publishing, 'deploy:clear'
