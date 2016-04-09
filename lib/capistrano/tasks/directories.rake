@@ -13,7 +13,6 @@ namespace :directories do
       fetch(:linked_dirs).each do |folder|
         if test "[ ! -d \"#{shared_path}/#{folder}\" ]"
           puts "Create #{folder} folder".colorize(:light_blue)
-
           execute :mkdir, '-p', "#{shared_path}/#{folder}"
 
           if test "[ -d \"#{release_path}/#{folder}\" ]"

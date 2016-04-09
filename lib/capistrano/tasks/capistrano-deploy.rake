@@ -55,10 +55,11 @@ namespace :deploy do
   end
 
   # Initialize
-  before :starting, 'deploy:initialize'
-  after :starting, 'deploy:install'
+  before 'deploy:starting', 'deploy:initialize'
+  before 'deploy:symlink:shared', 'deploy:install'
+  #after :starting, 'deploy:install'
 
   # Restart services and clear caches
-  after :publishing, 'deploy:clear'
+  after 'deploy:publishing', 'deploy:clear'
 
 end
