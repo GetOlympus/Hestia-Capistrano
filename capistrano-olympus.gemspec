@@ -21,7 +21,7 @@ Gem::Specification.new do |gem|
     'lib/capistrano-olympus.rb',
     'lib/capistrano/olympus.rb',
     'lib/capistrano/tasks/capistrano-deploy.rake',
-    'lib/capistrano/tasks/composer.rake',
+    #'lib/capistrano/tasks/composer.rake',
     'lib/capistrano/tasks/database.rake',
     'lib/capistrano/tasks/directories.rake',
     'lib/capistrano/tasks/files.rake',
@@ -40,7 +40,7 @@ Gem::Specification.new do |gem|
   gem.require_paths = ['lib']
 
   gem.add_dependency 'capistrano', '~> 3.4'
-  gem.add_dependency 'capistrano-composer', '~> 0.0.6'
+  #gem.add_dependency 'capistrano-composer', '~> 0.0.6'
+  gem.add_dependency 'capistrano-composer', '~> 0.0.3'
   gem.add_dependency 'colorize', '~> 0.7.7'
-  gem.add_dependency 'sshkit-sudo', '~> 0.1.0'
 end

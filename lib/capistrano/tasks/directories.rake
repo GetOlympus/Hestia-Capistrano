@@ -5,14 +5,18 @@ namespace :directories do
   task :do_actions do
     on release_roles(:all) do
 
+      # Create app/config folder
       if test "[ ! -d \"#{shared_path}/app/config\" ]"
-        puts "Create app/config folder".colorize(:light_blue)
+        puts " "
+        puts "> Create app/config folder".colorize(:light_blue)
         execute :mkdir, '-p', "#{shared_path}/app/config"
       end
 
+      # Create all linked dirs
       fetch(:linked_dirs).each do |folder|
         if test "[ ! -d \"#{shared_path}/#{folder}\" ]"
-          puts "Create #{folder} folder".colorize(:light_blue)
+          puts " "
+          puts "> Create #{folder} folder".colorize(:light_blue)
           execute :mkdir, '-p', "#{shared_path}/#{folder}"
 
           if test "[ -d \"#{release_path}/#{folder}\" ]"
@@ -20,6 +24,9 @@ namespace :directories do
           end
         end
       end
+
+      puts "end :directories".colorize(:light_blue)
+      puts " "
 
     end
   end
