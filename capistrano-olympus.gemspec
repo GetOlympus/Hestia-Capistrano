@@ -20,8 +20,11 @@ Gem::Specification.new do |gem|
     'capistrano-olympus.gemspec',
     'lib/capistrano-olympus.rb',
     'lib/capistrano/olympus.rb',
-    'lib/capistrano/tasks/*.rake',
-    'lib/capistrano/vars/*.rb',
+    'lib/capistrano/tasks/capistrano-deploy.rake',
+    'lib/capistrano/tasks/database.rake',
+    'lib/capistrano/tasks/directories.rake',
+    'lib/capistrano/tasks/files.rake',
+    'lib/capistrano/vars/defaults.rb',
   ]
   gem.executables   = gem.files.grep(%r{^bin/}) { |f| File.basename(f) }
 
@@ -34,4 +37,6 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'capistrano-composer', '~> 0.0.3'
   gem.add_dependency 'capistrano-file-permissions', '~> 1.0.0'
   gem.add_dependency 'colorize', '~> 0.7.7'
+
+  gem.add_runtime_dependency 'capistrano-file-permissions', '~> 1.0', '>= 1.0.0'
 end
