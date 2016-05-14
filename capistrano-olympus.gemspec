@@ -35,8 +35,6 @@ Gem::Specification.new do |gem|
 
   gem.add_dependency 'capistrano', '~> 3.4'
   gem.add_dependency 'capistrano-composer', '~> 0.0.3'
-  gem.add_dependency 'capistrano-file-permissions', '~> 1.0.0'
   gem.add_dependency 'colorize', '~> 0.7.7'
-
   gem.add_runtime_dependency 'capistrano-file-permissions', '~> 1.0', '>= 1.0.0'
 end
