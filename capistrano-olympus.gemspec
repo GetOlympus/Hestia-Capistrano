@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |gem|
   gem.name          = 'capistrano-olympus'
-  gem.version       = '0.0.7'
+  gem.version       = '0.0.8'
   gem.date          = Time.now.strftime("%Y-%m-%d")
   gem.authors       = ['Achraf Chouk']
   gem.email         = ['achrafchouk@gmail.com']
@@ -14,22 +14,14 @@ Gem::Specification.new do |gem|
   gem.license       = 'MIT'
 
   gem.files         = [
-    'CHANGELOG',
+    'CHANGELOG.md',
     'LICENSE',
     'README.md',
     'capistrano-olympus.gemspec',
     'lib/capistrano-olympus.rb',
     'lib/capistrano/olympus.rb',
-    'lib/capistrano/tasks/capistrano-deploy.rake',
-    'lib/capistrano/tasks/database.rake',
-    'lib/capistrano/tasks/directories.rake',
-    'lib/capistrano/tasks/files.rake',
-    'lib/capistrano/tasks/pagespeed.rake',
-    'lib/capistrano/tasks/php.rake',
-    'lib/capistrano/tasks/redis.rake',
-    'lib/capistrano/tasks/server.rake',
-    'lib/capistrano/tasks/varnish.rake',
-    'lib/capistrano/vars/defaults.rb',
+    'lib/capistrano/tasks/*.rake',
+    'lib/capistrano/vars/*.rb',
   ]
   gem.executables   = gem.files.grep(%r{^bin/}) { |f| File.basename(f) }
 
@@ -40,5 +32,6 @@ Gem::Specification.new do |gem|
 
   gem.add_dependency 'capistrano', '~> 3.4'
   gem.add_dependency 'capistrano-composer', '~> 0.0.3'
+  gem.add_dependency 'capistrano-file-permissions', '~> 1.0.0'
   gem.add_dependency 'colorize', '~> 0.7.7'
 end

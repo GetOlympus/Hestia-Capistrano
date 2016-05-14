@@ -30,14 +30,14 @@ namespace :database do
       puts " "
       puts "> Execute wp-cli commands to install WordPress SQL requests".colorize(:light_blue)
 
-      execute :mkdir, '-p', "#{shared_path}/tmp/wpcli"
-      execute "wp core download --path=#{shared_path}/tmp/wpcli --force"
+      execute "#{fetch(:sudo)} mkdir -p #{shared_path}/tmp/wpcli"
+      execute "#{fetch(:sudo)} wp core download --path=#{shared_path}/tmp/wpcli --force"
 
       puts "Execute wp-cli command to generate wp-config.php file".colorize(:light_blue)
-      execute "wp core config --path=#{shared_path}/tmp/wpcli --dbname=#{fetch(:database_name)} --dbuser=#{fetch(:database_user)} --dbpass=#{fetch(:database_pass)}"
+      execute "#{fetch(:sudo)} wp core config --path=#{shared_path}/tmp/wpcli --dbname=#{fetch(:database_name)} --dbuser=#{fetch(:database_user)} --dbpass=#{fetch(:database_pass)}"
 
-      execute "wp core install --path=#{shared_path}/tmp/wpcli --url=#{fetch(:localurl)} --title=#{fetch(:application)} --admin_user=#{fetch(:wordpress_name)} --admin_password=#{fetch(:wordpress_pass)} --admin_email=#{fetch(:wordpress_mail)}"
-      execute :rm, '-rf', "#{shared_path}/tmp"
+      execute "#{fetch(:sudo)} wp core install --path=#{shared_path}/tmp/wpcli --url=#{fetch(:localurl)} --title=#{fetch(:application)} --admin_user=#{fetch(:wordpress_name)} --admin_password=#{fetch(:wordpress_pass)} --admin_email=#{fetch(:wordpress_mail)}"
+      execute "#{fetch(:sudo)} rm -rf #{shared_path}/tmp"
 
       puts "end :database:wp_cli".colorize(:light_blue)
       puts " "

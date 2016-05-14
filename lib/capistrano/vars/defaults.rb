@@ -1,13 +1,20 @@
 # ~~~~
 
+set :files, fetch(:files, ['app/config/env.php', 'app/config/salt.php', 'web/.htaccess', 'web/robots.txt'])
+set :dirs, fetch(:dirs, ['web/statics/languages', 'web/statics/plugins', 'web/statics/uploads'])
+set :stage_user, fetch(:stage_user, 'www-data')
+
+# ~~~~
+
 # Setup Git
-set :repo_url, 'git@github.com:crewstyle/Olympus.git'
+set :repo_url, 'git@github.com:GetOlympus/Olympus.git'
 set :scm, :git
 set :git_enable_submodules, true
 
 # Setup SSH
 set :copy_exclude, ['.git', '.DS_Store', '.gitignore', '.gitmodules']
 set :use_sudo, false
+set :sudo, "sudo -u #{fetch(:stage_user)} -i --"
 set :ssh_options, {
   forward_agent: true
 }
@@ -16,13 +23,19 @@ set :ssh_options, {
 
 # Setup Composer
 set :composer_flags, '--no-dev --prefer-dist --optimize-autoloader'
-set :composer_install_flags, fetch(:composer_flags)
+set :composer_install_flags, :composer_flags
+
+# ~~~~
+
+# Setup File permissions
+set :file_permissions_paths, :files + :dirs
+set :file_permissions_users, [:stage_user]
 
 # ~~~~
 
 # Setup Symlinks
-set :linked_files, ["app/config/env.php", "app/config/salt.php", "web/.htaccess", "web/robots.txt"]
-set :linked_dirs, ["web/statics/languages", "web/statics/plugins", "web/statics/uploads"]
+set :linked_files, :files
+set :linked_dirs, :dirs
 
 # ~~~~
 

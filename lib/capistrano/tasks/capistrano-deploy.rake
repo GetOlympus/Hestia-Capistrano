@@ -8,12 +8,12 @@ namespace :deploy do
 
   task :message_start do
     puts " "
-    puts " Start deploy ".colorize(:color => :black, :background => :green)
+    puts "   Start deploy   ".colorize(:color => :black, :background => :green)
     puts " "
   end
   task :message_finish do
     puts " "
-    puts " Finish deploy ".colorize(:color => :black, :background => :green)
+    puts "   Finish deploy   ".colorize(:color => :black, :background => :green)
     puts " "
   end
 
@@ -103,6 +103,7 @@ namespace :deploy do
   after 'deploy:updating', 'deploy:init_all'
 
   # Restart services and clear caches
+  before 'deploy:updated', 'deploy:set_permissions:acl'
   after 'deploy:publishing', 'deploy:clear_caches'
 
 end

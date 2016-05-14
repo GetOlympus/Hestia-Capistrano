@@ -1,17 +1,31 @@
+##############################################
+# @package capistrano-olympus
+# @author Achraf Chouk <achrafchouk@gmail.com>
+# @since 0.0.7
+##############################################
+
+# Generated files
 *.gem
 *.rbc
+
+# Configuration files
 .bundle
 .config
 .yardoc
+
+# Locked files
 Gemfile.lock
-InstalledFiles
+
+# Tests, docs, libs, and more useless files to push
 _yardoc
 coverage
-doc/
-lib/bundler/man
+InstalledFiles
 pkg
 rdoc
+tmp
+
+doc/
+lib/bundler/man
 spec/reports
 test/tmp
 test/version_tmp
-tmp
