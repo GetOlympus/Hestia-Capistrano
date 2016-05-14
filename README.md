@@ -38,6 +38,13 @@ gem 'capistrano-olympus', '~> 0.0.8'
 require 'capistrano/olympus'
 ```
 
+To build a new `gem` file, follow these steps:
+
+```
+gem build capistrano-olympus.gemspec
+gem push capistrano-olympus-x.x.x.gem
+```
+
 ---
 
 ## Settings
