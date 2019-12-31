@@ -71,11 +71,13 @@ bundle exec cap production deploy
 ## Release History
 
 * 0.0.8 (May 14, 2016)
+- [x] ADD: add steps to build new gem file
 
 * 0.0.7 (April 11, 2016)
+- [x] ADD: update tasks, create linked_files and linked_dirs in the right way, create symlinks, and more
 
 * 0.0.6 (April 03, 2016)
-- Use our own Composer task.
+- [x] FIX: use our own Composer task
 
 ## Authors and Copyright
 
