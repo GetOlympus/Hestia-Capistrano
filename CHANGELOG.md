@@ -1,3 +1,7 @@
+## v0.0.8 (May 14, 2016)
+
+## v0.0.7 (April 11, 2016)
+
 ## v0.0.6 (April 03, 2016)
 Use our own Composer task.
 
