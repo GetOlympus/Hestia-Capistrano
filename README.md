@@ -35,7 +35,7 @@ set :keep_releases, fetch(:keep_releases, 3)
 
 # Setup Project
 set :application, fetch(:application, 'olympus-capified')
-set :localurl, fetch(:localurl, 'http://www.domain.tld')
+set :localurl, fetch(:localurl, 'https://www.domain.tld')
 ```
 
 ## Installation
@@ -44,13 +44,13 @@ You can easily install the **Olympus Hestia Capistrano** gem simply:
 
 ```sh
 # In your Capfile
-require 'capistrano/olympus'
+require 'capistrano/olympus-hestia-capistrano'
 ```
 
 ```sh
 # In your Gemfile
 gem 'capistrano',  '~> 3.4'
-gem 'olympus-hestia-capistrano', '~> 0.0.8'
+gem 'olympus-hestia-capistrano', '~> 0.0.9'
 ```
 
 ## Full example
@@ -110,8 +110,8 @@ Please, read [LICENSE][license-blob] for more information.
 [olympus-url]: https://github.com/GetOlympus
 [capistrano-image]: https://img.shields.io/badge/Capistrano-3-52C1DB.svg?style=flat-square
 [capistrano-url]: https://github.com/capistrano/capistrano
-[gem-image]: https://img.shields.io/gem/v/capistrano-olympus.svg?style=flat-square
-[gem-url]: https://rubygems.org/gems/capistrano-olympus
+[gem-image]: https://img.shields.io/gem/v/olympus-hestia-capistrano.svg?style=flat-square
+[gem-url]: https://rubygems.org/gems/olympus-hestia-capistrano
 [license-blob]: https://github.com/GetOlympus/Hestia-Capistrano/blob/master/LICENSE
 [license-image]: https://img.shields.io/badge/license-MIT_License-blue.svg?style=flat-square
 [license-url]: http://opensource.org/licenses/MIT
