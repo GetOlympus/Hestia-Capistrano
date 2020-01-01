@@ -1,7 +1,7 @@
 # Database
 namespace :database do
 
-  desc "Creates database"
+  desc "Create WordPress database"
   task :do_actions do
     on release_roles(:all) do
 
@@ -22,7 +22,7 @@ namespace :database do
     end
   end
 
-  desc "Install WP"
+  desc "Install WordPress CMS"
   task :wp_cli do
     on release_roles(:all) do
 

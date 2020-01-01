@@ -12,7 +12,7 @@ set :scm, :git
 set :git_enable_submodules, true
 
 # Setup SSH
-set :copy_exclude, ['.git', '.DS_Store', '.gitignore', '.gitmodules']
+set :copy_exclude, ['.DS_Store', '.git', '.gitignore', '.gitmodules']
 set :use_sudo, false
 set :sudo, "sudo -u #{fetch(:stage_user)} -i --"
 set :ssh_options, {

@@ -18,28 +18,6 @@
 + [**composer**](https://github.com/capistrano/composer)
 + [**file-permissions**](https://github.com/capistrano/file-permissions)
 
-## Installation
-
-You can easily install the **Olympus Hestia Capistrano** gem simply:
-
-```sh
-# In your Gemfile
-gem 'capistrano',  '~> 3.4'
-gem 'capistrano-olympus', '~> 0.0.8'
-```
-
-```sh
-# In your Capfile
-require 'capistrano/olympus'
-```
-
-To build a new `gem` file, follow these steps:
-
-```sh
-gem build capistrano-olympus.gemspec
-gem push capistrano-olympus-x.x.x.gem
-```
-
 ## Initialization
 
 All default settings are defined in the `lib/capistrano/vars/defaults.rb` file. Please, refer to it to see exactly how the defaults are set up.  
@@ -60,6 +38,21 @@ set :application, fetch(:application, 'olympus-capified')
 set :localurl, fetch(:localurl, 'http://www.domain.tld')
 ```
 
+## Installation
+
+You can easily install the **Olympus Hestia Capistrano** gem simply:
+
+```sh
+# In your Capfile
+require 'capistrano/olympus'
+```
+
+```sh
+# In your Gemfile
+gem 'capistrano',  '~> 3.4'
+gem 'olympus-hestia-capistrano', '~> 0.0.8'
+```
+
 ## Full example
 
 Depending on your stage files, you can deploy simply thanks to the following command line:
@@ -70,14 +63,15 @@ bundle exec cap production deploy
 
 ## Release History
 
+* 0.0.9 (December 31, 2019)
+- [x] ADD: change capistrano gem file
+- [x] ADD: contributors file
+
 * 0.0.8 (May 14, 2016)
 - [x] ADD: add steps to build new gem file
 
 * 0.0.7 (April 11, 2016)
 - [x] ADD: update tasks, create linked_files and linked_dirs in the right way, create symlinks, and more
-
-* 0.0.6 (April 03, 2016)
-- [x] FIX: use our own Composer task
 
 ## Authors and Copyright
 
@@ -97,6 +91,15 @@ Please, read [LICENSE][license-blob] for more information.
 3. Commit your changes (`git commit -am 'Add some fooBar'`)
 4. Push to the branch (`git push origin feature/fooBar`)
 5. Create a new Pull Request
+
+## Publishing
+
+To publish a new `gem` file, follow these steps:
+
+```sh
+gem build olympus-hestia-capistrano.gemspec
+gem push olympus-hestia-capistrano-x.x.x.gem
+```
 
 ---
 

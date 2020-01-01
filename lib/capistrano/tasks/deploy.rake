@@ -22,8 +22,7 @@ namespace :deploy do
     on release_roles(:all) do
 
       puts " "
-      puts "Running deploy:init_folders task".colorize(:color => :light_green, :mode => :bold, :mode => :underline)
-      puts " "
+      puts "> Running deploy:init_folders task".colorize(:color => :light_green, :mode => :bold, :mode => :underline)
 
       # Linked dirs
       # Check the very last action made: it means all setup processes are done!
@@ -39,8 +38,7 @@ namespace :deploy do
     on release_roles(:all) do
 
       puts " "
-      puts "Running deploy:init_files task".colorize(:color => :light_green, :mode => :bold)
-      puts " "
+      puts "> Running deploy:init_files task".colorize(:color => :light_green, :mode => :bold)
 
       # Linked files
       # Check the very last action made: it means all setup processes are done!
