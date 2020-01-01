@@ -1,4 +1,4 @@
-# Olympus Hestia Capistrano ![RubyGem Version][gem-image]
+# Olympus Hestia Capistrano [![RubyGem Version][gem-image]][gem-url]
 > **Olympus Hestia Capistrano** is a Ruby gem which provides a complete solution for deploying **WordPress** website easily with the **Olympus** package.
 
 [![Olympus Component][olympus-image]][olympus-url]
@@ -61,6 +61,23 @@ Depending on your stage files, you can deploy simply thanks to the following com
 bundle exec cap production deploy
 ```
 
+## Contributing
+
+1. Fork it (<https://github.com/GetOlympus/Hestia-Capistrano/fork>)
+2. Create your feature branch (`git checkout -b feature/fooBar`)
+3. Commit your changes (`git commit -am 'Add some fooBar'`)
+4. Push to the branch (`git push origin feature/fooBar`)
+5. Create a new Pull Request
+
+## Publishing
+
+To publish a new `gem` file, follow these steps:
+
+```sh
+gem build olympus-hestia-capistrano.gemspec
+gem push olympus-hestia-capistrano-x.x.x.gem
+```
+
 ## Release History
 
 * 0.0.9 (December 31, 2019)
@@ -84,23 +101,6 @@ Please, read [LICENSE][license-blob] for more information.
 [https://github.com/crewstyle](https://github.com/crewstyle)  
 [http://fr.linkedin.com/in/achrafchouk](http://fr.linkedin.com/in/achrafchouk)
 
-## Contributing
-
-1. Fork it (<https://github.com/GetOlympus/Hestia-Capistrano/fork>)
-2. Create your feature branch (`git checkout -b feature/fooBar`)
-3. Commit your changes (`git commit -am 'Add some fooBar'`)
-4. Push to the branch (`git push origin feature/fooBar`)
-5. Create a new Pull Request
-
-## Publishing
-
-To publish a new `gem` file, follow these steps:
-
-```sh
-gem build olympus-hestia-capistrano.gemspec
-gem push olympus-hestia-capistrano-x.x.x.gem
-```
-
 ---
 
 **Built with ♥ by [Achraf Chouk](http://github.com/crewstyle "Achraf Chouk") ~ (c) since a long time.**
@@ -109,8 +109,9 @@ gem push olympus-hestia-capistrano-x.x.x.gem
 [olympus-image]: https://img.shields.io/badge/for-Olympus-44cc11.svg?style=flat-square
 [olympus-url]: https://github.com/GetOlympus
 [capistrano-image]: https://img.shields.io/badge/Capistrano-3-52C1DB.svg?style=flat-square
-[capistrano-url]: https://rubygems.org/gems/capistrano-olympus
+[capistrano-url]: https://github.com/capistrano/capistrano
 [gem-image]: https://img.shields.io/gem/v/capistrano-olympus.svg?style=flat-square
+[gem-url]: https://rubygems.org/gems/capistrano-olympus
 [license-blob]: https://github.com/GetOlympus/Hestia-Capistrano/blob/master/LICENSE
 [license-image]: https://img.shields.io/badge/license-MIT_License-blue.svg?style=flat-square
 [license-url]: http://opensource.org/licenses/MIT
