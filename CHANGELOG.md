@@ -1,3 +1,9 @@
+## v0.0.10 (January 12th, 2020)
+Latest capistrano version compatibility.
+
+## v0.0.9 (January 1st, 2020)
+Change gem name to the definitive one.
+
 ## v0.0.8 (May 14, 2016)
 
 ## v0.0.7 (April 11, 2016)

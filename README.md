@@ -80,26 +80,17 @@ gem push olympus-hestia-capistrano-x.x.x.gem
 
 ## Release History
 
-* 0.0.9 (December 31, 2019)
-- [x] ADD: change capistrano gem file
-- [x] ADD: contributors file
-
-* 0.0.8 (May 14, 2016)
-- [x] ADD: add steps to build new gem file
-
-* 0.0.7 (April 11, 2016)
-- [x] ADD: update tasks, create linked_files and linked_dirs in the right way, create symlinks, and more
+See [**CHANGELOG.md**][changelog-blob] for all details.
 
 ## Authors and Copyright
 
 Achraf Chouk  
 [![@crewstyle][twitter-image]][twitter-url]
 
-Please, read [LICENSE][license-blob] for more information.  
-[![MIT][license-image]][license-url]
-
 [https://github.com/crewstyle](https://github.com/crewstyle)  
 [http://fr.linkedin.com/in/achrafchouk](http://fr.linkedin.com/in/achrafchouk)
+
+Please, read [![MIT][license-image]][license-blob] for more information.
 
 ---
 
@@ -110,10 +101,10 @@ Please, read [LICENSE][license-blob] for more information.
 [olympus-url]: https://github.com/GetOlympus
 [capistrano-image]: https://img.shields.io/badge/Capistrano-3-52C1DB.svg?style=flat-square
 [capistrano-url]: https://github.com/capistrano/capistrano
+[changelog-blob]: https://github.com/GetOlympus/Hestia-Capistrano/blob/master/CHANGELOG.md
 [gem-image]: https://img.shields.io/gem/v/olympus-hestia-capistrano.svg?style=flat-square
 [gem-url]: https://rubygems.org/gems/olympus-hestia-capistrano
 [license-blob]: https://github.com/GetOlympus/Hestia-Capistrano/blob/master/LICENSE
 [license-image]: https://img.shields.io/badge/license-MIT_License-blue.svg?style=flat-square
-[license-url]: http://opensource.org/licenses/MIT
 [twitter-image]: https://img.shields.io/badge/crewstyle-blue.svg?style=social&logo=twitter
 [twitter-url]: http://twitter.com/crewstyle
