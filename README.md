@@ -50,7 +50,7 @@ require 'capistrano/olympus-hestia-capistrano'
 ```sh
 # In your Gemfile
 gem 'capistrano',  '~> 3.4'
-gem 'olympus-hestia-capistrano', '~> 0.0.9'
+gem 'olympus-hestia-capistrano', '~> 0.0.10'
 ```
 
 ## Full example
