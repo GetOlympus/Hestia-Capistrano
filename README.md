@@ -19,9 +19,9 @@
 
 ## Requirements
 
-+ **colorize** <https://github.com/fazibear/colorize>
-+ **composer** <https://github.com/capistrano/composer>
-+ **file-permissions** <https://github.com/capistrano/file-permissions>
++ **colorize** ~ <https://github.com/fazibear/colorize>
++ **composer** ~ <https://github.com/capistrano/composer>
++ **file-permissions** ~ <https://github.com/capistrano/file-permissions>
 
 ## Initialization
 
@@ -66,6 +66,10 @@ Depending on your stage files, you can deploy simply thanks to the following com
 bundle exec cap production deploy
 ```
 
+## Release History
+
+See [**CHANGELOG.md**][changelog-blob] for all details.
+
 ## Contributing
 
 1. Fork it (<https://github.com/GetOlympus/Hestia-Capistrano/fork>)
@@ -82,10 +86,6 @@ To publish a new `gem` file, follow these steps:
 gem build olympus-hestia-capistrano.gemspec
 gem push olympus-hestia-capistrano-x.x.x.gem
 ```
-
-## Release History
-
-See [**CHANGELOG.md**][changelog-blob] for all details.
 
 ---
 
