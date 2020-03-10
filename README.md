@@ -1,8 +1,13 @@
 # Olympus Hestia Capistrano [![RubyGem Version][gem-image]][gem-url]
 > **Olympus Hestia Capistrano** is a Ruby gem which provides a complete solution for deploying **WordPress** website easily with the **Olympus** package.
 
+---
+
 [![Olympus Component][olympus-image]][olympus-url]
 [![Capistrano 3][capistrano-image]][capistrano-url]
+[![MIT][license-image]][license-blob]
+
+---
 
 ## Features
 
@@ -14,9 +19,9 @@
 
 ## Requirements
 
-+ [**colorize**](https://github.com/fazibear/colorize)
-+ [**composer**](https://github.com/capistrano/composer)
-+ [**file-permissions**](https://github.com/capistrano/file-permissions)
++ **colorize** <https://github.com/fazibear/colorize>
++ **composer** <https://github.com/capistrano/composer>
++ **file-permissions** <https://github.com/capistrano/file-permissions>
 
 ## Initialization
 
@@ -53,7 +58,7 @@ gem 'capistrano',  '~> 3.4'
 gem 'olympus-hestia-capistrano', '~> 0.0.10'
 ```
 
-## Full example
+## Deployment
 
 Depending on your stage files, you can deploy simply thanks to the following command line:
 
@@ -82,16 +87,6 @@ gem push olympus-hestia-capistrano-x.x.x.gem
 
 See [**CHANGELOG.md**][changelog-blob] for all details.
 
-## Authors and Copyright
-
-Achraf Chouk  
-[![@crewstyle][twitter-image]][twitter-url]
-
-[https://github.com/crewstyle](https://github.com/crewstyle)  
-[http://fr.linkedin.com/in/achrafchouk](http://fr.linkedin.com/in/achrafchouk)
-
-Please, read [![MIT][license-image]][license-blob] for more information.
-
 ---
 
 **Built with ♥ by [Achraf Chouk](http://github.com/crewstyle "Achraf Chouk") ~ (c) since a long time.**
@@ -106,5 +101,3 @@ Please, read [![MIT][license-image]][license-blob] for more information.
 [gem-url]: https://rubygems.org/gems/olympus-hestia-capistrano
 [license-blob]: https://github.com/GetOlympus/Hestia-Capistrano/blob/master/LICENSE
 [license-image]: https://img.shields.io/badge/license-MIT_License-blue.svg?style=flat-square
-[twitter-image]: https://img.shields.io/badge/crewstyle-blue.svg?style=social&logo=twitter
-[twitter-url]: http://twitter.com/crewstyle
